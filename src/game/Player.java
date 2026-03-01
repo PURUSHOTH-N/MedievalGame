@@ -26,4 +26,19 @@ public class Player {
                "\nHealth: " + health +
                "\nWeapon: " + weapon.getName();
     }
+
+	public void takeDamage(int damage) {
+		health -= damage;
+		if (health <= 0) {
+			System.out.println("You have died.");
+			System.exit(0);
+		}
+	}
+
+	public void heal(int amount) {
+		health += amount;
+		if (health > 100) {
+			health = 100;
+		}
+	}
 }
