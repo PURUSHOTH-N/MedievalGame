@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Scanner;
+
 public class Player {
 
     private String name;
@@ -40,5 +42,27 @@ public class Player {
 		if (health > 100) {
 			health = 100;
 		}
+	}
+
+	public Player start(Scanner console) {
+
+		Art.homeScreen();
+
+		System.out.println("Load saved game? (y/n)");
+		String answer = console.next().toLowerCase();
+
+		Player player;
+
+		if (answer.equals("y")) {
+			System.out.println("Enter name:");
+			String name = console.next();
+			player = new Player(name); // load later
+		} else {
+			System.out.println("Enter new character name:");
+			String name = console.next();
+			player = new Player(name);
+		}
+
+		return player;
 	}
 }
