@@ -1,8 +1,10 @@
 package game;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Player {
+public class Player implements Serializable {
+	private static final long serialVersionUID = 1L;
 
     private String name;
     private int health;

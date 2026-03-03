@@ -1,6 +1,9 @@
 package game;
 
-public class Armour {
+import java.io.Serializable;
+
+public class Armour implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private final String name;
 	private int durability;
