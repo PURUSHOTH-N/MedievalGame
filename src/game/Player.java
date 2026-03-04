@@ -91,4 +91,10 @@ public class Player implements Serializable {
 
 		return loaded;
 	}
+
+	public void attack(Enemy enemy) {
+		int damage = weapon.getDamage();
+		System.out.println("You attack the " + enemy.getName() + " for " + damage + " damage!");
+		enemy.takeDamage(damage);
+	}
 }
