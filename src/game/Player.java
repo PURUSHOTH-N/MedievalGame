@@ -1,5 +1,8 @@
 package game;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -66,5 +69,26 @@ public class Player implements Serializable {
 		}
 
 		return player;
+	}
+
+	public Player load(String name) {
+
+		Player loaded;
+
+		try {
+			FileInputStream fis = new FileInputStream(name + ".svr");
+
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			loaded = (Player) ois.readObject();
+
+			ois.close();
+			fis.close();
+
+		} catch (IOException | ClassNotFoundException e) {
+			loaded = new Player(name);
+		}
+
+		return loaded;
 	}
 }
