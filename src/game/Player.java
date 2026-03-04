@@ -1,10 +1,6 @@
 package game;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Player implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -49,48 +45,11 @@ public class Player implements Serializable {
 		}
 	}
 
-	public Player start(Scanner console) {
-
-		Art.homeScreen();
-
-		System.out.println("Load saved game? (y/n)");
-		String answer = console.next().toLowerCase();
-
-		Player player;
-
-		if (answer.equals("y")) {
-			System.out.println("Enter name:");
-			String name = console.next();
-			player = new Player(name); // load later
-		} else {
-			System.out.println("Enter new character name:");
-			String name = console.next();
-			player = new Player(name);
-		}
-
-		return player;
+	public int getHealth() {
+		return health;
 	}
 
-	public Player load(String name) {
 
-		Player loaded;
-
-		try {
-			FileInputStream fis = new FileInputStream(name + ".svr");
-
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			loaded = (Player) ois.readObject();
-
-			ois.close();
-			fis.close();
-
-		} catch (IOException | ClassNotFoundException e) {
-			loaded = new Player(name);
-		}
-
-		return loaded;
-	}
 
 	public void attack(Enemy enemy) {
 		int damage = weapon.getDamage();
